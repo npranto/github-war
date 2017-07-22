@@ -1,0 +1,19 @@
+.list-of-languages{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    padding: 1em;
+    margin: 1em;
+}
+.language a {
+    padding: 0.5m;
+    margin: 0.5em;
+    text-decoration: none;
+    color: lightgrey;
+}
+.language:hover a, .current-language a{
+    color: crimson;
+}
+.current-language a{
+    font-weight: bold;
+}

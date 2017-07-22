@@ -1,0 +1,20 @@
+.list-of-bars{
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+}
+.bar{
+    padding: 0.50em 1em;
+    cursor: pointer;
+    border-bottom: 0.25em solid white;
+}
+
+.bar a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.bar:hover{
+    background: #F5F5F5;
+    border-color: orange;
+}
