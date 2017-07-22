@@ -1,4 +1,4 @@
-###github-war
+# github-war
 
 Battle between GitHub users and finding popular repositories on GitHub
 
