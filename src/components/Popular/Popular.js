@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Popular.css';
 import LanguageNavigations from './../LanguageNavigations/LanguageNavigations.js';
 import Repos from './../Repos/Repos.js';
+import getPopularReposByLanguage from './../../utilities/getPopularReposByLanguage.js';
 
 class Popular extends Component {
     constructor(props) {
@@ -15,21 +16,38 @@ class Popular extends Component {
                 "CSS",
                 "Python"
             ],
-            currentLanguage: null
+            currentLanguage: null,
+            popularReposByLanguage: null
         };
         
     }
     
     componentWillMount() {
         this.setState({
-            currentLanguage: this.state.languages[0]
+            currentLanguage: this.state.languages[0],
+            popularReposByLanguage: []
         })
+    }
+
+    componentDidMount() {
+        this.updatePopularReposByLanguage(this.state.currentLanguage);   
     }
     
     updateCurrentLangauge(newLanguage) {
         this.setState({
-            currentLanguage: newLanguage
+            currentLanguage: newLanguage,
+            popularReposByLanguage: this.updatePopularReposByLanguage(newLanguage)
         })    
+    }
+
+    updatePopularReposByLanguage(language) {
+        getPopularReposByLanguage(language)
+            .then((response) => {
+                console.log(response);
+                this.setState({
+                    popularReposByLanguage: response.data.items
+                }) 
+            })
     }
     
     render() {
@@ -40,7 +58,9 @@ class Popular extends Component {
                     languages={this.state.languages} 
                     currentLanguage={this.state.currentLanguage} 
                     onLanguageChange={(language) => this.updateCurrentLangauge(language)} />
-                <Repos currentLanguage={this.state.currentLanguage} />
+                <Repos 
+                    currentLanguage={this.state.currentLanguage} 
+                    popularReposByLanguage={this.state.popularReposByLanguage} />
             </div>
         )
     }

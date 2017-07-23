@@ -34,7 +34,6 @@ class LanguageNavigations extends Component {
                         })
                     }
                 </ul>
-                <h1> {this.props.currentLanguage} </h1>
             </div>
         )
     }
