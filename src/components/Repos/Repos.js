@@ -5,19 +5,16 @@ class Repos extends Component {
 	constructor(props) {
 		super(props);
 	}
-
-	componentWillMount() {
-		const encodeURI = window.encodeURI(
-			`https://api.github.com/search/repositories?q=stars%3E1+language:${this.props.currentLanguage}&sort=stars&order=desc&type=Repositories`
-		)
-		// installed axios
-		// just create a get() request here...
-	}
-
 	render() {
 		return (
 			<div className="repos"> 
-				<h1> Repos </h1>
+				<ul>
+					{
+						this.props.popularReposByLanguage.map((repo, index, repos) => {
+							return <li key={index}> {index+1}: {repo.name} by {repo.owner.login} </li>
+						})
+					}
+				</ul>
 			</div>	
 		)
 	}
