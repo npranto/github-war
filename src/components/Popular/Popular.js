@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Popular.css';
 import LanguageNavigations from './../LanguageNavigations/LanguageNavigations.js';
+import Repos from './../Repos/Repos.js';
 
 class Popular extends Component {
     constructor(props) {
@@ -26,7 +27,6 @@ class Popular extends Component {
     }
     
     updateCurrentLangauge(newLanguage) {
-        console.log(newLanguage);
         this.setState({
             currentLanguage: newLanguage
         })    
@@ -36,7 +36,11 @@ class Popular extends Component {
         return (
             <div className="popular">
                 <h1> Popular </h1>
-                <LanguageNavigations languages={this.state.languages} currentLanguage={this.state.currentLanguage} onLanguageChange={(language) => this.updateCurrentLangauge(language)} />
+                <LanguageNavigations 
+                    languages={this.state.languages} 
+                    currentLanguage={this.state.currentLanguage} 
+                    onLanguageChange={(language) => this.updateCurrentLangauge(language)} />
+                <Repos currentLanguage={this.state.currentLanguage} />
             </div>
         )
     }
