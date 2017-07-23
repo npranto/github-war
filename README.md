@@ -1,7 +1,6 @@
 # github-war
 
-Battle between GitHub users and finding popular repositories on GitHub
-
+Battle among GitHub users and find popular repositories on GitHub
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
