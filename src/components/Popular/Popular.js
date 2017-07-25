@@ -32,12 +32,12 @@ class Popular extends Component {
     componentDidMount() {
         this.updatePopularReposByLanguage(this.state.currentLanguage);   
     }
-    
-    updateCurrentLangauge(newLanguage) {
+
+    updateCurrentLanguage(newLanguage) {
+        console.log(newLanguage);
         this.setState({
-            currentLanguage: newLanguage,
-            popularReposByLanguage: this.updatePopularReposByLanguage(newLanguage)
-        })    
+            currentLanguage: newLanguage
+        }, this.updatePopularReposByLanguage(newLanguage))
     }
 
     updatePopularReposByLanguage(language) {
@@ -46,7 +46,8 @@ class Popular extends Component {
                 console.log(response);
                 this.setState({
                     popularReposByLanguage: response.data.items
-                }) 
+                })
+                console.log(this.state);
             })
     }
     
@@ -57,7 +58,7 @@ class Popular extends Component {
                 <LanguageNavigations 
                     languages={this.state.languages} 
                     currentLanguage={this.state.currentLanguage} 
-                    onLanguageChange={(language) => this.updateCurrentLangauge(language)} />
+                    onLanguageChange={(language) => this.updateCurrentLanguage(language)} />
                 <Repos 
                     currentLanguage={this.state.currentLanguage} 
                     popularReposByLanguage={this.state.popularReposByLanguage} />
