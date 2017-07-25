@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Repos.css';
+import Repo from './../Repo/Repo.js';
 
 class Repos extends Component {
 	constructor(props) {
@@ -14,10 +15,18 @@ class Repos extends Component {
 
 		let renderPopularReposByLanguage = () => {
 			return (
-				<ul>
+				<ul className="popular-repos">
                     {
-                        this.props.popularReposByLanguage.map((repo, index, repos) => {
-                            return <li key={index}> {index+1}: {repo.name} by {repo.owner.login} </li>
+                        this.props.popularReposByLanguage
+							.sort((a, b) => {
+                        		return b.stargazers_count - a.stargazers_count;
+							})
+							.map((repo, index, repos) => {
+                            return (
+								<li key={index}>
+									<Repo rank={index+1} repo={repo} />
+								</li>
+							)
                         })
                     }
 				</ul>

@@ -1,0 +1,8 @@
+.popular-repos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.popular-repos li{
+    width: 30%;
+}
