@@ -6,15 +6,31 @@ class Repos extends Component {
 		super(props);
 	}
 	render() {
-		return (
-			<div className="repos"> 
+		let renderLoading = () => {
+			return (
+				<h1> Loading... </h1>
+			)
+		}
+
+		let renderPopularReposByLanguage = () => {
+			return (
 				<ul>
-					{
-						this.props.popularReposByLanguage.map((repo, index, repos) => {
-							return <li key={index}> {index+1}: {repo.name} by {repo.owner.login} </li>
-						})
-					}
+                    {
+                        this.props.popularReposByLanguage.map((repo, index, repos) => {
+                            return <li key={index}> {index+1}: {repo.name} by {repo.owner.login} </li>
+                        })
+                    }
 				</ul>
+			)
+		}
+
+		return (
+			<div className="repos">
+				{
+                    !this.props.popularReposByLanguage
+						? renderLoading()
+							: renderPopularReposByLanguage()
+				}
 			</div>	
 		)
 	}
