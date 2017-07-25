@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b71f616-509a-468d-a25d-d8b7c4543296" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Popular/Popular.js" afterPath="$PROJECT_DIR$/src/components/Popular/Popular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Repos/Repos.js" afterPath="$PROJECT_DIR$/src/components/Repos/Repos.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utilities/getPopularReposByLanguage.js" afterPath="$PROJECT_DIR$/src/utilities/getPopularReposByLanguage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -53,7 +52,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Repos.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Repos.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Repos/Repos.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="342">
@@ -61,6 +60,16 @@
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="6" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,6 +90,7 @@
         <option value="$PROJECT_DIR$/src/components/Repos/Repos.js" />
         <option value="$PROJECT_DIR$/src/utilities/getPopularReposByLanguage.js" />
         <option value="$PROJECT_DIR$/src/components/Popular/Popular.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -282,12 +292,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1500985674777</updated>
-      <workItem from="1500985675946" duration="1449000" />
+      <workItem from="1500985675946" duration="1540000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1449000" />
+    <option name="totallyTimeSpent" value="1540000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -358,6 +368,14 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="6" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
