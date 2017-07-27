@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {NavLink, Switch} from 'react-router-dom';
 import './MainNavigations.css';
 
 class MainNavigations extends Component {
@@ -6,9 +7,18 @@ class MainNavigations extends Component {
         super(props);
         this.state = {
             tabBars: [
-                "Home", 
-                "Battle", 
-                "Popular"
+                {
+                    tabName: "Home",
+                    url: '/'
+                },
+                {
+                    tabName: "Battle",
+                    url: '/battle'
+                },
+                {
+                    tabName: "Popular",
+                    url: '/popular'
+                }
             ]
         }
     }
@@ -19,8 +29,8 @@ class MainNavigations extends Component {
                     {
                         this.state.tabBars.map((tabBar, index, tabBars) => {
                             return (
-                                <li className="bar" key={index}> 
-                                    <a href="#"> {tabBar}  </a>
+                                <li className="bar" key={index}>
+                                    <NavLink to={tabBar.url} activeClassName="active-tab" className="bar-link"> {tabBar.tabName} </NavLink>
                                 </li>
                             )
                         })

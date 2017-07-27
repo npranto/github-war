@@ -3,18 +3,17 @@
     flex-flow: row;
     justify-content: flex-end;
 }
-.bar{
+.bar .bar-link{
     padding: 0.50em 1em;
     cursor: pointer;
     border-bottom: 0.25em solid white;
 }
 
-.bar a{
+.bar .bar-link{
     text-decoration: none;
     color: black;
     font-weight: bold;
 }
-.bar:hover{
+.bar .bar-link:hover, .active-tab {
     background: #F5F5F5;
-    border-color: orange;
 }
