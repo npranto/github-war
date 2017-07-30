@@ -1,0 +1,9 @@
+.battle-button-container{
+    margin: 2em;
+}
+.battle-button{
+    background: black;
+    color: white;
+    padding: 0.50em 1em;
+    border-radius: 0.25em;
+}
