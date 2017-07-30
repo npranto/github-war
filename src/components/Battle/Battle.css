@@ -1,0 +1,36 @@
+.battle-arena{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    margin-top: 4em;
+}
+.player-one *, .player-two * {
+    display: block;
+    text-align: center;
+}
+.player-one img, .player-two img {
+    width: 25vw;
+    height: 25vw;
+}
+
+input{
+    height: 2.5em;
+    margin: 1em;
+    font-size: 1em;
+}
+
+.submit {
+    background: black;
+    color: white;
+    padding: 0.50em 1em;
+    border-radius: 0.25em;
+}
+.vs img{
+    width: 20vw;
+}
+sup{
+    margin-top: 1em;
+}
+.reddish{
+    color: orangered;
+}
