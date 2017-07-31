@@ -72,14 +72,17 @@ class Battle extends Component {
     }
 
     queryToObject(query) {
+        console.log('QUERY: ', query);
         let splitEachKeyAndValuePair = query.slice().split('&');
-        splitEachKeyAndValuePair.map((keyValue, index, keyValues) => {
+        return splitEachKeyAndValuePair.map((keyValue, index, keyValues) => {
             let keyAndValue = keyValue.slice().split('=');
             let obj = {}
             obj[keyAndValue[0]] = keyAndValue[1];
             return obj;
         })
     }
+
+
 
     render() {
         return (
@@ -113,7 +116,7 @@ class Battle extends Component {
                         <div className="battle">
                             <h1> Result </h1>
                             <div className="battle-arena">
-                                <Result username={props.location.search} />
+                                <Result username={this.queryToObject(props.location.search.slice(1))[0].playerOneName} />
                                 <div className="vs text-center">
                                     <img src="https://static.comicvine.com/uploads/original/13/135592/5270582-4644160274-vs.pn.png" alt="versus logo"/>
                                     <br/>
@@ -123,7 +126,7 @@ class Battle extends Component {
                                         search: `?playerOneName=${this.state.playerOne.username}&playerTwoName=${this.state.playerTwo.username}`
                                     }} className="reddish"> Battle </Link>
                                 </div>
-                                <Result username={props.location.search} />
+                                <Result username={this.queryToObject(props.location.search.slice(1))[1].playerTwoName} />
                             </div>
                         </div>
                     )

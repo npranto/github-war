@@ -1,35 +1,81 @@
 import React, {Component} from 'react';
 import './Result.css';
+import getGitHubUserProfile from './../../utilities/getGitHubUserProfile.js';
+import getGitHubUserScore from './../../utilities/getGitHubUserScore.js';
 
 class Result extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            username: this.props.username
+            readyToRender: false
         }
-        console.log(this.state.username)
+    }
+
+    componentDidMount() {
+        getGitHubUserProfile(this.props.username)
+            .then((profile) => {
+                this.setState({
+                    username: this.props.username,
+                    name: profile.data.name,
+                    avatar: profile.data.avatar_url,
+                    location: profile.data.location,
+                    followers: profile.data.followers,
+                    following: profile.data.following,
+                    publicRepos: profile.data.public_repos,
+                    blog: profile.data.blog,
+                    company: profile.data.company
+                })
+                getGitHubUserScore(this.state.username)
+                    .then((score) => {
+                        console.log(score);
+                        setTimeout(() => {
+                            this.setState({
+                                score: score.data.items[0].score.toFixed(2),
+                                readyToRender: true
+                            })
+                        }, 1000);
+
+                    })
+            })
     }
 
     render() {
+
+        let renderLoading = () => {
+            return (
+                <h1> Loading... </h1>
+            )
+        };
+
+        let renderResult = () => {
+            return (
+                <div className="result">
+                    <div className="user-profile">
+                        <p className="title winner"> Winner </p>
+                        <h3> Score: {this.state.score} </h3>
+                        <img src={this.state.avatar} alt="github-avatar"/>
+                        <h3> @{this.state.username} </h3>
+                    </div>
+                    <div className="stats">
+                        <p> {this.state.name} </p>
+                        <p> {this.state.location} </p>
+                        <p> {this.state.company} </p>
+                        <p> Followers: {this.state.followers} </p>
+                        <p> Following: {this.state.following} </p>
+                        <p> Public Repos: {this.state.publicRepos} </p>
+                        <p>
+                            <a href={this.state.blog} className="blog-url"> {this.state.blog} </a>
+                        </p>
+                    </div>
+                </div>
+            )
+        }
+
         return (
-            <div className="result">
-                <div className="user-profile">
-                    <img src="https://avatars2.githubusercontent.com/u/13524077?v=4" alt=""/>
-                    <h3> @npranto </h3>
-                </div>
-                <div className="stats">
-                    <p> Nazmuz Shakib Pranto </p>
-                    <p> Cambridge, MA </p>
-                    <p> Lexia Learning </p>
-                    <p> Followers: 10 </p>
-                    <p> Following: 17 </p>
-                    <p> Public Repos: 116 </p>
-                    <p>
-                        <a href="http://nsp.surge.sh/" className="blog-url"> http://nsp.surge.sh/ </a>
-                    </p>
-                </div>
-            </div>
+            (!this.state.readyToRender)
+                ? renderLoading()
+                    : renderResult()
         )
     }
 }
