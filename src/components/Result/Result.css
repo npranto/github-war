@@ -9,3 +9,13 @@ img {
     color: dodgerblue;
     text-decoration: underline;
 }
+.title{
+    font-family: "Abadi MT Condensed Light";
+    font-size: 3em;
+}
+.winner{
+    color: green;
+}
+.loser{
+    color: red;
+}
