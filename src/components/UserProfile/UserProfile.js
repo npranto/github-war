@@ -1,21 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './UserProfile.css';
 
-class UserProfile extends Component {
-    constructor(props) {
-        super(props);
+const UserProfile = (props) => {
+
+    const onReset = () => {
+        props.onReset();
     }
-    render() {
-        return (
-            <div className="user-profile">
-                <img src="https://avatars3.githubusercontent.com/u/13524077?v=4&s=400" alt=""/>
-                <h3> @{this.props.username} </h3>
-                <sup>
-                    <a href="#" className="reddish"> Reset </a>
-                </sup>
-            </div>
-        )
-    }
+
+    return (
+        <div className="user-profile">
+            <img src={props.avatar} alt=""/>
+            <h3> @{props.username} </h3>
+            <sup>
+                <a href="/" className="reddish" onClick={() => onReset()}> Reset </a>
+            </sup>
+        </div>
+    )
 }
 
 export default UserProfile;

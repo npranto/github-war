@@ -4,6 +4,15 @@
     justify-content: space-around;
     margin-top: 4em;
 }
+@media only screen and (min-width: 300px) and (max-width: 800px) {
+    .battle-arena{
+        flex-flow: column;
+        justify-content: flex-start;
+    }
+    .battle-arena * {
+        text-align: center;
+    }
+}
 .player-one *, .player-two * {
     display: block;
     text-align: center;

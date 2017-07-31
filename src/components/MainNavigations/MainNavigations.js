@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavLink, Switch} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import './MainNavigations.css';
 
 class MainNavigations extends Component {
