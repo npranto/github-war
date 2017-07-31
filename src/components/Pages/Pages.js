@@ -9,7 +9,7 @@ const Pages = (props) => {
     return (
         <div className="pages">
             <Switch>
-                <Route exact={true} path="/" component={Home}/>
+                <Route exact path="/" component={Home}/>
                 <Route path="/battle" component={Battle}/>
                 <Route path="/popular" component={Popular}/>
                 <Route render={() => {
