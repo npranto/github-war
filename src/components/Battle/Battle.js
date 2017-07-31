@@ -12,11 +12,13 @@ class Battle extends Component {
         this.state = {
             playerOne: {
                 username: null,
-                avatar: null
+                avatar: null,
+                score: null
             },
             playerTwo: {
                 username: null,
-                avatar: null
+                avatar: null,
+                score: null
             }
         }
     }
@@ -116,7 +118,17 @@ class Battle extends Component {
                         <div className="battle">
                             <h1> Result </h1>
                             <div className="battle-arena">
-                                <Result username={this.queryToObject(props.location.search.slice(1))[0].playerOneName} />
+                                <Result
+                                    username={this.queryToObject(props.location.search.slice(1))[0].playerOneName}
+                                    sendScoreToDetermineWinner={(score) =>
+                                        this.setState({
+                                            playerOne: {
+                                                score: score
+                                            }
+                                        })
+                                    }
+                                    opponentScore={this.state.playerTwo.score}
+                                />
                                 <div className="vs text-center">
                                     <img src="https://static.comicvine.com/uploads/original/13/135592/5270582-4644160274-vs.pn.png" alt="versus logo"/>
                                     <br/>
@@ -126,7 +138,17 @@ class Battle extends Component {
                                         search: `?playerOneName=${this.state.playerOne.username}&playerTwoName=${this.state.playerTwo.username}`
                                     }} className="reddish"> Battle </Link>
                                 </div>
-                                <Result username={this.queryToObject(props.location.search.slice(1))[1].playerTwoName} />
+                                <Result
+                                    username={this.queryToObject(props.location.search.slice(1))[1].playerTwoName}
+                                    sendScoreToDetermineWinner={(score) =>
+                                        this.setState({
+                                            playerTwo: {
+                                                score: score
+                                            }
+                                        })
+                                    }
+                                    opponentScore={this.state.playerOne.score}
+                                />
                             </div>
                         </div>
                     )
