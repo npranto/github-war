@@ -12,6 +12,10 @@ class Result extends Component {
         }
     }
 
+    sendScoreToDetermineWinner() {
+        this.props.sendScoreToDetermineWinner(this.state.score);
+    }
+
     componentDidMount() {
         getGitHubUserProfile(this.props.username)
             .then((profile) => {
@@ -28,14 +32,11 @@ class Result extends Component {
                 })
                 getGitHubUserScore(this.state.username)
                     .then((score) => {
-                        console.log(score);
-                        setTimeout(() => {
-                            this.setState({
-                                score: score.data.items[0].score.toFixed(2),
-                                readyToRender: true
-                            })
-                        }, 1000);
-
+                        this.setState({
+                            score: score.data.items[0].score.toFixed(2),
+                            readyToRender: true
+                        })
+                        this.sendScoreToDetermineWinner();
                     })
             })
     }
@@ -52,7 +53,10 @@ class Result extends Component {
             return (
                 <div className="result">
                     <div className="user-profile">
-                        <p className="title winner"> Winner </p>
+                        <p
+                            className={`title ${(this.state.score >= this.props.opponentScore) ? 'winner' : 'loser'}`}>
+                            {(this.state.score >= this.props.opponentScore) ? 'Winner' : 'Loser'}
+                        </p>
                         <h3> Score: {this.state.score} </h3>
                         <img src={this.state.avatar} alt="github-avatar"/>
                         <h3> @{this.state.username} </h3>
