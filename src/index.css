@@ -10,9 +10,12 @@ ul{
 }
 
 h1{
-    margin: 0px;
+    margin-bottom: 0px;
 }
 
 .text-center{
     text-align: center;
+}
+.green{
+    background: mediumvioletred !important;
 }
