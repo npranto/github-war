@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import {Route, Link, Switch} from 'react-router-dom';
 import './Battle.css';
 import SearchGitHubUser from './../SearchGitHubUser/SearchGitHubUser.js';
 import UserProfile from './../UserProfile/UserProfile.js';
+import Result from './../Result/Result.js';
 
 class Battle extends Component {
     constructor(props) {
@@ -69,25 +71,65 @@ class Battle extends Component {
         }
     }
 
+    queryToObject(query) {
+        let splitEachKeyAndValuePair = query.slice().split('&');
+        splitEachKeyAndValuePair.map((keyValue, index, keyValues) => {
+            let keyAndValue = keyValue.slice().split('=');
+            let obj = {}
+            obj[keyAndValue[0]] = keyAndValue[1];
+            return obj;
+        })
+    }
+
     render() {
         return (
-            <div className="battle">
-                <h1> Battle </h1>
-                <div className="battle-arena">
-                    {
-                        this.renderPlayer("One", this.state.playerOne)
-                    }
-                    <div className="vs text-center">
-                        <img src="https://static.comicvine.com/uploads/original/13/135592/5270582-4644160274-vs.pn.png" alt="versus logo"/>
-                        <br/>
-                        <br/>
-                        <a href="/" className="submit green"> Battle </a>
-                    </div>
-                    {
-                        this.renderPlayer("Two", this.state.playerTwo)
-                    }
-                </div>
-            </div>
+            <Switch>
+                <Route exact path={`${this.props.match.url}`} render={(props) => {
+                    return (
+                        <div className="battle">
+                            <h1> Battle </h1>
+                            <div className="battle-arena">
+                                {
+                                    this.renderPlayer("One", this.state.playerOne)
+                                }
+                                <div className="vs text-center">
+                                    <img src="https://static.comicvine.com/uploads/original/13/135592/5270582-4644160274-vs.pn.png" alt="versus logo"/>
+                                    <br/>
+                                    <br/>
+                                    <Link to={{
+                                        pathname: '/battle/result',
+                                        search: `?playerOneName=${this.state.playerOne.username}&playerTwoName=${this.state.playerTwo.username}`
+                                    }} className="reddish"> Battle </Link>
+                                </div>
+                                {
+                                    this.renderPlayer("Two", this.state.playerTwo)
+                                }
+                            </div>
+                        </div>
+                    )
+                }}/>
+                <Route path={`${this.props.match.url}/result`} render={(props) => {
+                    return (
+                        <div className="battle">
+                            <h1> Result </h1>
+                            <div className="battle-arena">
+                                <Result username={props.location.search} />
+                                <div className="vs text-center">
+                                    <img src="https://static.comicvine.com/uploads/original/13/135592/5270582-4644160274-vs.pn.png" alt="versus logo"/>
+                                    <br/>
+                                    <br/>
+                                    <Link to={{
+                                        pathname: '/battle/result',
+                                        search: `?playerOneName=${this.state.playerOne.username}&playerTwoName=${this.state.playerTwo.username}`
+                                    }} className="reddish"> Battle </Link>
+                                </div>
+                                <Result username={props.location.search} />
+                            </div>
+                        </div>
+                    )
+                }}/>
+            </Switch>
+
         )
     }
 }

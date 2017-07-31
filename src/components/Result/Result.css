@@ -1,0 +1,11 @@
+img {
+    width: 25vw;
+    height: 25vw;
+}
+.stats{
+    padding: 1em;
+}
+.blog-url{
+    color: dodgerblue;
+    text-decoration: underline;
+}
