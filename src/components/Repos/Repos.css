@@ -1,7 +1,7 @@
 .popular-repos{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
 }
 .popular-repos li{
     width: 30%;

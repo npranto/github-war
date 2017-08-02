@@ -23,22 +23,6 @@ class Battle extends Component {
         }
     }
 
-    renderPlayer(playerNumber, player) {
-        if(!player.username){
-            return (
-                <div className={`player-${playerNumber.toLowerCase()}`}>
-                    <SearchGitHubUser playerNumber={playerNumber} onSubmitUsername={(newUsername) => this.updatePlayer(playerNumber, newUsername)} />
-                </div>
-            )
-        }else {
-            return (
-                <div className={`player-${playerNumber.toLowerCase()}`}>
-                    <UserProfile username={player.username} avatar={player.avatar} onReset={() => {this.onReset(playerNumber)}} />
-                </div>
-            )
-        }
-    }
-
     updatePlayer(playerNumber, newUserName) {
         if(playerNumber === 'One') {
             this.setState({
@@ -87,6 +71,37 @@ class Battle extends Component {
 
 
     render() {
+        const renderPlayer = (playerNumber, player) => {
+            if(!player.username){
+                return (
+                    <div className={`player-${playerNumber.toLowerCase()}`}>
+                        <SearchGitHubUser playerNumber={playerNumber} onSubmitUsername={(newUsername) => this.updatePlayer(playerNumber, newUsername)} />
+                    </div>
+                )
+            }else {
+                return (
+                    <div className={`player-${playerNumber.toLowerCase()}`}>
+                        <UserProfile username={player.username} avatar={player.avatar} onReset={() => {this.onReset(playerNumber)}} />
+                    </div>
+                )
+            }
+        }
+
+        const renderVersusAndBattle = () => {
+            return (
+                <div className="vs text-center">
+                    <img src="https://static.comicvine.com/uploads/original/13/135592/5270582-4644160274-vs.pn.png" alt="versus logo"/>
+                    <br/>
+                    <br/>
+                    <Link to={{
+                        pathname: '/battle/result',
+                        search: `?playerOneName=${this.state.playerOne.username}&playerTwoName=${this.state.playerTwo.username}`
+                    }} className="reddish battle-button"> Battle </Link>
+                </div>
+            )
+        }
+
+
         return (
             <Switch>
                 <Route exact path={`${this.props.match.url}`} render={(props) => {
@@ -95,19 +110,13 @@ class Battle extends Component {
                             <h1> Battle </h1>
                             <div className="battle-arena">
                                 {
-                                    this.renderPlayer("One", this.state.playerOne)
+                                    renderPlayer("One", this.state.playerOne)
                                 }
-                                <div className="vs text-center">
-                                    <img src="https://static.comicvine.com/uploads/original/13/135592/5270582-4644160274-vs.pn.png" alt="versus logo"/>
-                                    <br/>
-                                    <br/>
-                                    <Link to={{
-                                        pathname: '/battle/result',
-                                        search: `?playerOneName=${this.state.playerOne.username}&playerTwoName=${this.state.playerTwo.username}`
-                                    }} className="reddish"> Battle </Link>
-                                </div>
                                 {
-                                    this.renderPlayer("Two", this.state.playerTwo)
+                                    renderVersusAndBattle()
+                                }
+                                {
+                                    renderPlayer("Two", this.state.playerTwo)
                                 }
                             </div>
                         </div>
@@ -129,15 +138,9 @@ class Battle extends Component {
                                     }
                                     opponentScore={this.state.playerTwo.score}
                                 />
-                                <div className="vs text-center">
-                                    <img src="https://static.comicvine.com/uploads/original/13/135592/5270582-4644160274-vs.pn.png" alt="versus logo"/>
-                                    <br/>
-                                    <br/>
-                                    <Link to={{
-                                        pathname: '/battle/result',
-                                        search: `?playerOneName=${this.state.playerOne.username}&playerTwoName=${this.state.playerTwo.username}`
-                                    }} className="reddish"> Battle </Link>
-                                </div>
+                                {
+                                    renderVersusAndBattle()
+                                }
                                 <Result
                                     username={this.queryToObject(props.location.search.slice(1))[1].playerTwoName}
                                     sendScoreToDetermineWinner={(score) =>

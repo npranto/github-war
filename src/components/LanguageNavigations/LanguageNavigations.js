@@ -20,7 +20,7 @@ const LanguageNavigations = (props) => {
                                             : "language"
                                 } key={index}>
                                 <a
-                                    href="/"
+                                    href="#"
                                     onClick={() => onLanguageChange(language)}
                                     >
                                     {language}
