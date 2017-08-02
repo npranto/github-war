@@ -4,7 +4,6 @@ import './SearchGitHubUser.css';
 class SearchGitHubUser extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             username: null
         }

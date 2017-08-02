@@ -41,6 +41,7 @@ Availability: https://codepen.io/arqex/pen/mKBcE
         transform: rotate(180deg);
     }
 }
+
 @keyframes ball1 {
     12% {
         transform: none;

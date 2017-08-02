@@ -1,12 +1,11 @@
 import React from 'react';
-import './LanguageNavigations.css';
+import './LanguageNavigation.css';
 
-const LanguageNavigations = (props) => {
-
+const LanguageNavigation = (props) => {
     const onLanguageChange = (language) => {
         props.onLanguageChange(language);
     }
-    
+
     return (
         <div className="language-navigations">
             <ul className="list-of-languages">
@@ -34,4 +33,4 @@ const LanguageNavigations = (props) => {
     )
 }
 
-export default LanguageNavigations;
+export default LanguageNavigation;

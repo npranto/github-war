@@ -5,7 +5,6 @@ import Loading from './../Loading/Loading.js';
 
 
 const Repos = (props) => {
-
 	let renderLoading = () => {
 		return (
 			<Loading />

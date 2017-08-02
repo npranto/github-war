@@ -8,7 +8,6 @@ import Result from './../Result/Result.js';
 class Battle extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             playerOne: {
                 username: null,
@@ -58,7 +57,6 @@ class Battle extends Component {
     }
 
     queryToObject(query) {
-        console.log('QUERY: ', query);
         let splitEachKeyAndValuePair = query.slice().split('&');
         return splitEachKeyAndValuePair.map((keyValue, index, keyValues) => {
             let keyAndValue = keyValue.slice().split('=');
@@ -67,8 +65,6 @@ class Battle extends Component {
             return obj;
         })
     }
-
-
 
     render() {
         const renderPlayer = (playerNumber, player) => {
@@ -100,7 +96,6 @@ class Battle extends Component {
                 </div>
             )
         }
-
 
         return (
             <Switch>
@@ -157,7 +152,6 @@ class Battle extends Component {
                     )
                 }}/>
             </Switch>
-
         )
     }
 }

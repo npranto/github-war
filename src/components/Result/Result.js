@@ -7,14 +7,9 @@ import Loading from './../Loading/Loading.js';
 class Result extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             readyToRender: false
         }
-    }
-
-    sendScoreToDetermineWinner() {
-        this.props.sendScoreToDetermineWinner(this.state.score);
     }
 
     componentDidMount() {
@@ -42,8 +37,11 @@ class Result extends Component {
             })
     }
 
-    render() {
+    sendScoreToDetermineWinner() {
+        this.props.sendScoreToDetermineWinner(this.state.score);
+    }
 
+    render() {
         let renderLoading = () => {
             return (
                 <Loading />
@@ -80,7 +78,7 @@ class Result extends Component {
         return (
             (!this.state.readyToRender)
                 ? renderLoading()
-                    : renderLoading()
+                    : renderResult()
         )
     }
 }

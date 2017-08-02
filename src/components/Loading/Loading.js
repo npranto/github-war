@@ -11,14 +11,10 @@ import './Loading.css';
 class Loading extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
             randomColors: []
         }
-
-        // window.setInterval(() => {
-        //     this.shuffleRandomColors()
-        // }, 500);
+        this.changeBallBackgroundByInterval();
     }
 
     componentDidMount() {
@@ -32,18 +28,33 @@ class Loading extends Component {
         })
     }
 
-    shuffleRandomColors() {
+    changeBallBackgroundByInterval() {
+        window.setInterval(() => {
+            this.setState({
+                randomColors: this.shuffleRandomColors()
+            })
+        }, 1500);
+    }
 
+    shuffleRandomColors() {
+        let copyOfRandomColors = this.state.randomColors.slice();
+        for(let currentIndex=0; currentIndex<copyOfRandomColors.length; currentIndex++) {
+            let randomIndex = Math.floor(Math.random() * (copyOfRandomColors.length));
+            let copyOfCurrentIndexValue = copyOfRandomColors[currentIndex];
+            copyOfRandomColors[currentIndex] = copyOfRandomColors[randomIndex];
+            copyOfRandomColors[randomIndex] = copyOfCurrentIndexValue;
+        }
+        return copyOfRandomColors;
     }
 
     render() {
         return (
             <div className="loading">
                 <div className="spinner">
-                    <div className="ball ball-1" style={this.state.randomColors[0]}></div>
-                    <div className="ball ball-2" style={this.state.randomColors[1]}></div>
-                    <div className="ball ball-3" style={this.state.randomColors[2]}></div>
-                    <div className="ball ball-4" style={this.state.randomColors[3]}></div>
+                    <div className="ball ball-1" style={{backgroundColor: this.state.randomColors[0]}}></div>
+                    <div className="ball ball-2" style={{backgroundColor: this.state.randomColors[1]}}></div>
+                    <div className="ball ball-3" style={{backgroundColor: this.state.randomColors[2]}}></div>
+                    <div className="ball ball-4" style={{backgroundColor: this.state.randomColors[3]}}></div>
                 </div>
             </div>
         )
