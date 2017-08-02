@@ -2,20 +2,17 @@ body {
   margin: 1.5em;
   font-family: sans-serif;
 }
-
-ul{
+ul {
     list-style-type: none;
     padding: 0px;
     margin: 0px;
 }
-
 h1{
     margin-bottom: 0px;
 }
-
-.text-center{
+.text-center {
     text-align: center;
 }
-.green{
+.green {
     background: mediumvioletred !important;
 }

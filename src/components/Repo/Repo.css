@@ -23,11 +23,9 @@ a {
     max-width: 90%;
     border-radius: 50%;
 }
-
 h3, h5, p {
     margin: 0.25em;
 }
-
 
 @-webkit-keyframes AnimationName {
     0%{background-position:0% 50%}

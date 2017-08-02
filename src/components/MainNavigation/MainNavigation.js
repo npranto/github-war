@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
-import './MainNavigations.css';
+import './MainNavigation.css';
 
-class MainNavigations extends Component {
+class MainNavigation extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -41,4 +41,4 @@ class MainNavigations extends Component {
     }
 }
 
-export default MainNavigations;
+export default MainNavigation;

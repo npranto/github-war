@@ -22,7 +22,7 @@ const Pages = (props) => {
                                 color: 'red',
                                 textAlign: 'center',
                             }}> Oops! </h3>
-                            <p> Something went wrong... go back! </p>
+                            <p> Something went wrong... <a href="/" style={{color: 'blue', }}> go back</a>! </p>
                         </div>
                     )
                 }}/>

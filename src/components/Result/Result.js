@@ -2,18 +2,14 @@ import React, {Component} from 'react';
 import './Result.css';
 import getGitHubUserProfile from './../../utilities/getGitHubUserProfile.js';
 import getGitHubUserScore from './../../utilities/getGitHubUserScore.js';
+import Loading from './../Loading/Loading.js';
 
 class Result extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             readyToRender: false
         }
-    }
-
-    sendScoreToDetermineWinner() {
-        this.props.sendScoreToDetermineWinner(this.state.score);
     }
 
     componentDidMount() {
@@ -41,11 +37,14 @@ class Result extends Component {
             })
     }
 
-    render() {
+    sendScoreToDetermineWinner() {
+        this.props.sendScoreToDetermineWinner(this.state.score);
+    }
 
+    render() {
         let renderLoading = () => {
             return (
-                <h1> Loading... </h1>
+                <Loading />
             )
         };
 
