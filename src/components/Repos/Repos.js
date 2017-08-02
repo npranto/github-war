@@ -19,12 +19,12 @@ const Repos = (props) => {
 							return b.stargazers_count - a.stargazers_count;
 						})
 						.map((repo, index, repos) => {
-						return (
-							<li key={index}>
-								<Repo rank={index+1} repo={repo} />
-							</li>
-						)
-					})
+							return (
+								<li key={index}>
+									<Repo rank={index+1} repo={repo} />
+								</li>
+							)
+						})
 				}
 			</ul>
 		)

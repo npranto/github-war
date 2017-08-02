@@ -43,3 +43,9 @@ sup{
 .reddish{
     color: orangered;
 }
+.battle-button{
+    color: white;
+    background: orangered;
+    padding: 0.50em 1em;
+    border-radius: 0.25em;
+}
