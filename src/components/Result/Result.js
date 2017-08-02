@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Result.css';
 import getGitHubUserProfile from './../../utilities/getGitHubUserProfile.js';
 import getGitHubUserScore from './../../utilities/getGitHubUserScore.js';
+import Loading from './../Loading/Loading.js';
 
 class Result extends Component {
     constructor(props) {
@@ -45,7 +46,7 @@ class Result extends Component {
 
         let renderLoading = () => {
             return (
-                <h1> Loading... </h1>
+                <Loading />
             )
         };
 
@@ -79,7 +80,7 @@ class Result extends Component {
         return (
             (!this.state.readyToRender)
                 ? renderLoading()
-                    : renderResult()
+                    : renderLoading()
         )
     }
 }

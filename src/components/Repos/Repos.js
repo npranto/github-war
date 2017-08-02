@@ -1,12 +1,14 @@
 import React from 'react';
 import './Repos.css';
 import Repo from './../Repo/Repo.js';
+import Loading from './../Loading/Loading.js';
+
 
 const Repos = (props) => {
 
 	let renderLoading = () => {
 		return (
-			<h1> Loading... </h1>
+			<Loading />
 		)
 	}
 
